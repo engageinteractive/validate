@@ -1,6 +1,11 @@
 /*-------------------------------
  
-	$.VALIDATE.JS
+	VALIDATE.JS
+
+	A barebones jQuery validation plugin
+
+	@author Todd Francis
+	@version 1.0.0
  
 -------------------------------*/
 
@@ -66,6 +71,8 @@
 			groupFunctions = ['checkGroupRequired', 'checkGroupMin', 'checkGroupMax'];
 
 		plugin.$form = $form;
+
+		plugin.version = '1.0.0';
  
 		if( $form !== undefined ){
  
@@ -293,11 +300,11 @@
  
 					}
  
-				// Do we have a custom regExp to pass it though?
+				// Do we have a regExp to pass it though?
 				}else if( o.regExp[rules[i].rule] ){
  
 					// Need to check that the field doesn't have a value
-					if( $field.val() !== '' && !plugin.checkRegExp($field, rules[i].rule) ){
+					if( $field.val() !== '' && !checkRegExp($field, rules[i].rule) ){
 
 						failedRules.push(rules[i]);
  
@@ -455,7 +462,7 @@
 		 * @param  {string} modifiers    i, g, m etc
 		 * @returns {boolean}           
 		 */
-		plugin.checkCustomRegExp = function($field, regExp, modifiers){
+		plugin.checkRegExp = function($field, regExp, modifiers){
  
 			if( $field.val() === '' ) return true;
  
@@ -526,17 +533,17 @@
 		};
  
 		/**
-		 * Evaluates the regex
+		 * Evaluates the regex stored in the options
 		 * 
 		 * @param  {Object} $field
 		 * @param  {string} regExp
 		 * @returns {boolean}
 		 */
-		plugin.checkRegExp = function($field, regExp){
+		function checkRegExp($field, regExp){
 
 			return $field.val().match(o.regExp[regExp]) ? true : false;
  
-		};
+		}
  
 	};
  

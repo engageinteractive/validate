@@ -91,7 +91,7 @@
 
 		<div class="field">
 			<label for="username">Username <small>a-zA-Z0-9_- only</small></label>
-			<input type="text" name="username" class="text" value="" data-validate="required|regExp[username]">
+			<input type="text" name="username" class="text" value="" data-validate="required|username">
 		</div>
 
 		<div class="field">
@@ -101,7 +101,7 @@
 				
 		<div class="field">
 			<label for="custom">Custom <small>Only A-Za-z allowed</small></label>
-			<input type="text" name="custom" id="custom" class="text" value="" data-validate="required|customRegExp[^[A-Z]*$,i]">
+			<input type="text" name="custom" id="custom" class="text" value="" data-validate="required|regExp[^[A-Z]*$,i]">
 		</div>
 				
 		<div class="field">
