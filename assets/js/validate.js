@@ -60,9 +60,7 @@
 				numeric				: /^[0-9]*$/,
 				alphanumeric		: /^[a-zA-Z0-9]*$/,
 				url					: /^(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$/,
-				email				: /^[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9\-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
-				hex					: /^#(([a-fA-F0-9]){3}){1,2}$/,
-				fullName			: /^[A-Za-z\W]+\s[A-Za-z\W]+$/
+				email				: /^[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9\-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/
 			}
 		};
  
@@ -304,7 +302,7 @@
 				}else if( o.regExp[rules[i].rule] ){
  
 					// Need to check that the field doesn't have a value
-					if( $field.val() !== '' && !checkRegExp($field, rules[i].rule) ){
+					if( $field.val() !== '' && !plugin.checkRegExp($field, rules[i].rule) ){
 
 						failedRules.push(rules[i]);
  
@@ -462,13 +460,26 @@
 		 * @param  {string} modifiers    i, g, m etc
 		 * @returns {boolean}           
 		 */
-		plugin.checkRegExp = function($field, regExp, modifiers){
+		plugin.checkCustomRegExp = function($field, regExp, modifiers){
  
 			if( $field.val() === '' ) return true;
  
 			var obj = new RegExp(regExp, modifiers);
 
 			return $field.val().match(obj) ? true : false;
+ 
+		};
+ 
+		/**
+		 * Evaluates the regex stored in the options
+		 * 
+		 * @param  {Object} $field
+		 * @param  {string} regExp
+		 * @returns {boolean}
+		 */
+		plugin.checkRegExp = function($field, regExp){
+
+			return $field.val().match(o.regExp[regExp]) ? true : false;
  
 		};
  
@@ -531,19 +542,6 @@
 			return parseFloat($field.val()) >= parseFloat(min);
  
 		};
- 
-		/**
-		 * Evaluates the regex stored in the options
-		 * 
-		 * @param  {Object} $field
-		 * @param  {string} regExp
-		 * @returns {boolean}
-		 */
-		function checkRegExp($field, regExp){
-
-			return $field.val().match(o.regExp[regExp]) ? true : false;
- 
-		}
  
 	};
  
