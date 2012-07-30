@@ -1,0 +1,214 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Validate</title>
+
+	<style>
+		.field.error label {
+			color: #C00;
+		}
+
+		.field.valid label {
+			color: #0C0;
+		}
+
+		/* Some simple styles to make it more presentable */
+
+		h1 {
+			font-family: Helvetica, Arial, sans-serif;
+		}
+
+		label {
+			font-family: Verdana, Geneva, Arial, Helvetica, sans-serif
+		}
+
+		form {
+			width: 500px;
+		}
+
+		.field {
+			overflow: hidden;
+			margin-bottom: 10px;
+		}
+
+		.field label {
+			width: 200px;
+			display: inline-block;
+			font-size: 12px;
+		}
+
+		label small {
+			display: block;
+			color: #444;
+		}
+
+		.field input {
+			width: 250px;
+		}
+
+		.field input[type="checkbox"] {
+			width: auto;
+		}
+
+		.checkboxes label {
+			float: left;
+			clear: both;
+		}
+
+		.checkboxes > div {
+			float: left;
+		}
+
+		.checkboxes > label:first-child {
+			margin-left: 0;
+		}
+
+		.buttons {
+			margin-left: 200px;
+		}
+	</style>
+</head>
+<body>
+	
+	<h1>Validation examples</h1>
+	<form id="form" action="" method="post" novalidate="novalidate">
+
+		<div class="field">
+			<label for="text_box">Simple text box <small>Required field</small></label>
+			<input type="text" name="text_box" class="text" value="" data-validate="required">
+		</div>
+
+		<div class="field" style="display: none;">
+			<label for="text_box">Simple Hidden text box</label>
+			<input type="text" name="text_box" class="text" value="" data-validate="required">
+		</div>
+
+		<div class="field">
+			<label for="email">Email <small>Autodetected as email</small></label>
+			<input type="email" name="email" class="text" value="" data-validate="required">
+		</div>
+
+		<div class="field">
+			<label for="username">Username <small>a-zA-Z0-9_- only</small></label>
+			<input type="text" name="username" class="text" value="" data-validate="required|regExp[username]">
+		</div>
+
+		<div class="field">
+			<label for="alphanumeric">Alphanumeric <small>Alphanumeric characters only</small></label>
+			<input type="text" name="alphanumeric" class="text" value="" data-validate="required|alphanumeric">
+		</div>
+				
+		<div class="field">
+			<label for="custom">Custom <small>Only A-Za-z allowed</small></label>
+			<input type="text" name="custom" id="custom" class="text" value="" data-validate="required|customRegExp[^[A-Z]*$,i]">
+		</div>
+				
+		<div class="field">
+			<label for="matches">Matches <small>Custom validation, must match the custom field above</small></label>
+			<input type="text" name="matches" id="matches" class="text" value="" data-validate="required|matches[custom]">
+		</div>
+				
+		<div class="field">
+			<label for="range">Range <small>Number between 1-12</small></label>
+			<input type="text" name="range" id="range" class="text" value="" data-validate="required|min[1]|max[12]">
+		</div>
+		
+		<div class="field checkboxes">
+		
+			<label>Checkboxes <small>Select at least 2, at most 3</small></label>
+				
+			<div data-validate="groupRequired|groupMin[2]|groupMax[3]">
+				
+				<label for="checkbox_1">
+					<input type="checkbox" id="checkbox_1" name="checkbox[]" value="1"> Option 1
+				</label>
+				
+				<label for="checkbox_2">
+					<input type="checkbox" id="checkbox_2" name="checkbox[]" value="2"> Option 2
+				</label>
+				
+				<label for="checkbox_3">
+					<input type="checkbox" id="checkbox_3" name="checkbox[]" value="3"> Option 3
+				</label>
+				
+				<label for="checkbox_4">
+					<input type="checkbox" id="checkbox_4" name="checkbox[]" value="4"> Option 4
+				</label>
+			
+			</div>
+	
+		</div>
+		
+		<div class="field buttons">
+			<button type="submit" name="submit_form">Submit</button>
+		</div>
+		
+	</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script src="assets/js/validate.js"></script>
+<script>
+	$(function(){
+
+		/*---------------------
+			
+			FORM VALIDATION
+		
+		---------------------*/
+
+		var formSettings = {
+			singleError			: function($field, rules){
+
+				$field
+					.closest('.field')
+					.removeClass('valid')
+					.addClass('error');
+					
+			},
+			singleSuccess			: function($field, rules){
+
+				$field
+					.closest('.field')
+					.removeClass('error')
+					.addClass('valid');
+
+			},
+			overallSuccess        	: function(){
+
+				alert('Everything is OK, submit!');
+
+			},
+			overallError			: function($form, fields){
+
+				alert('Errors found');
+
+			},
+			autoDetect				: true,
+			debug                 	: true,
+			// Add in a new RegExp rule
+			regExp					: {
+				username				: /^[a-zA-Z0-9\-_]*$/
+			}
+		};
+
+		var $validate = $('#form')
+				.validate(formSettings)
+				.data('validate');
+
+		/*---------------------
+		
+			Custom validation
+		
+		*/
+
+		$validate.checkMatches = function($field, toMatch){
+
+			return $field.val() == $('[name="'+toMatch+'"]').val();
+			
+		}
+
+	});
+</script>
+</body>
+</html>
