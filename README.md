@@ -6,7 +6,7 @@ A barebones jQuery validation plugin.
 
 Fully configurable and extendable, it can be used in any size project.
 
-Have a [look at the example](index.html).
+Have a look at index.html for an demo.
 
 ---
 
