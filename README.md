@@ -34,6 +34,8 @@ To add rules to your elements, simple add in the data attribute `data-validate`:
 
 Rules should be separated with a pipe (|), and parameters for various rules should be enclosed in square brackets: `data-validate="min[2]|max[100]"`
 
+The plugin will automatically be called when the form is submitted.
+
 ### Advanced
 
 You can also use the plugin independently, by calling it like so:
