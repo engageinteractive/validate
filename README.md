@@ -68,7 +68,7 @@ Check at least 1 checkbox/radio has been selected. This must be placed on the *c
 **groupMin[X]**  
 Check if at least X checkboxes/radios have been checked. This must be placed on the *container* of the inputs  
 **groupMax[X]**  
-Check if at most X checkboxes/radios have been checked. This must be placed on the *container* of the inputs
+Check if at most X checkboxes/radios have been checked. This must be placed on the *container* of the inputs  
 **regExp[name]**  
 Check the value against a saved regual expression. (i.e. alpha, email etc.)  
 **customRegExp[value,modifiers]**  
