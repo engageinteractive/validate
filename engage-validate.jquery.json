@@ -1,6 +1,6 @@
 {
-    "name": "engage.validate",
-    "title": "Engage.Validate.js",
+    "name": "engage-validate",
+    "title": "Validate.js",
     "description": "A barebones jQuery validation plugin.",
     "keywords": [
         "validate",
