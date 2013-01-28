@@ -1,11 +1,12 @@
 {
-    "name": "validate",
-    "title": "Validate",
+    "name": "engage.validate",
+    "title": "Engage.Validate,js",
     "description": "A barebones jQuery validation plugin.",
     "keywords": [
         "validate",
         "validation",
-        "forms"
+        "forms",
+        "engage"
     ],
     "version": "1.0.1",
     "author": {
