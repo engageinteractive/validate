@@ -5,7 +5,7 @@
 	A barebones jQuery validation plugin
 
 	@author Todd Francis
-	@version 1.0.0
+	@version 1.0.1
 
 -------------------------------*/
 
@@ -70,7 +70,7 @@
 
 		plugin.$form = $form;
 
-		plugin.version = '1.0.0';
+		plugin.version = '1.0.1';
 
 		if( $form !== undefined ){
 
