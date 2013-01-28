@@ -51,36 +51,51 @@ var $validate = new $.validate(settings, form);
 
 These rules can be used in the data-validate attribute. **Please note the camelCasing!**
 
-**required**
-Returns true if a value is entered
-**alpha**
-Only allow letters
-**numeric**
-Only allow numbers
-**alphanumeric**
-Only allow letter/numbers
-**url**
-Only allow valid URLs (must include https/http/ftp)
-**email**
-Only allow valid emails
-**groupRequired**
-Check at least 1 checkbox/radio has been selected. This must be placed on the *container* of the inputs
-**groupMin[X]**
-Check if at least X checkboxes/radios have been checked. This must be placed on the *container* of the inputs
-**groupMax[X]**
-Check if at most X checkboxes/radios have been checked. This must be placed on the *container* of the inputs
-**regExp[name]**
-Check the value against a saved regual expression. (i.e. alpha, email etc.)
-**customRegExp[value,modifiers]**
-Check the value against a custom regular expression *without* the wrapping /. e.g., [A-Z,igm]
-**max[X]**
-Only allow numbers that are equal to or below X
-**min[X]**
-Only allow numbers that are equal to or above X
-**minLength[X]**
-Only allow values that are equal to or less than length X
-**maxLength[X]**
-Only allow values that are equal to or more than length X
+**required**  
+Returns true if a value is entered  
+
+**alpha**  
+Only allow letters  
+
+**numeric**  
+Only allow numbers  
+
+**alphanumeric**  
+Only allow letter/numbers  
+
+**url**  
+Only allow valid URLs (must include https/http/ftp)  
+
+**email**  
+Only allow valid emails  
+
+**groupRequired**  
+Check at least 1 checkbox/radio has been selected. This must be placed on the *container* of the inputs 
+ 
+**groupMin[X]**  
+Check if at least X checkboxes/radios have been checked. This must be placed on the *container* of the inputs  
+
+**groupMax[X]**  
+Check if at most X checkboxes/radios have been checked. This must be placed on the *container* of the inputs  
+
+**regExp[name]**  
+Check the value against a saved regual expression. (i.e. alpha, email etc.)  
+
+**customRegExp[value,modifiers]**  
+Check the value against a custom regular expression *without* the wrapping /. e.g., [A-Z,igm]  
+
+**max[X]**  
+Only allow numbers that are equal to or below X  
+
+**min[X]**  
+Only allow numbers that are equal to or above X  
+
+**minLength[X]**  
+Only allow values that are equal to or less than length X  
+
+**maxLength[X]**  
+Only allow values that are equal to or more than length X  
+
 
 ### Options
 
@@ -88,29 +103,37 @@ The jQuery plugin has 1 optional parameter, the options object, where as if you 
 
 #### Settings object
 
-**debug** *false*
-If set to true, the form will not submit on success.
-**autoDetect** *false*
-If set to true, html5 input types will automatically be detected (i.e. email)
-**visibleOnly** *true*
-If set to true, only visible elements will be checked
-**beforeSubmit** *function(){}*
-Function to call before the form is checked
-**singleError** *function($field, failedRules){}*
-Function to call if an error is found. This is called *per field*. So if two fields have errors, this will be called twice.
-**overallError** *function($form, failedFields){}*
-Function to be called if the form has errors
-**singleSuccess** *function($field, rules){}*
-Function to be called if a field has validated
-**overallSuccess** *function($form){}*
-Function to be called if the form has passed validation
+**debug** *false*  
+If set to true, the form will not submit on success.  
+
+**autoDetect** *false*  
+If set to true, html5 input types will automatically be detected (i.e. email)  
+
+**visibleOnly** *true*  
+If set to true, only visible elements will be checked  
+
+**beforeSubmit** *function(){}*  
+Function to call before the form is checked  
+
+**singleError** *function($field, failedRules){}*  
+Function to call if an error is found. This is called *per field*. So if two fields have errors, this will be called twice.  
+
+**overallError** *function($form, failedFields){}*  
+Function to be called if the form has errors  
+
+**singleSuccess** *function($field, rules){}*  
+Function to be called if a field has validated  
+
+**overallSuccess** *function($form){}*  
+Function to be called if the form has passed validation  
+
 **regExp** *{
 	alpha			: ...,
 	numeric			: ...,
 	alphanumeric		: ...,
 	url			: ...,
 	email			: ...
-}*
+}*  
 Object of RegExps used to validate fields. This means you can easily replace existing ones or add your own.
 
 #### Form
@@ -122,46 +145,46 @@ You can optionally pass in a form element if you are using the class method. Thi
 
 ### Public Methods
 
-**checkField** *($field)*
-Validates the field, returns true/false.
+**checkField** *($field)*  
+Validates the field, returns true/false.  
 
-**checkValue** *($field, rules)*
+**checkValue** *($field, rules)*  
 Validates a field based on the array of rules you pass in. Useful if you want to add new rules as you go.
 
-**fieldsToCheck** *($form)*
+**fieldsToCheck** *($form)*  
 Returns a jQuery selection of fields the form checks when validating. Pass in a form to check, or leave blank to use the currently set form.
 
-**checkRequired** *($field)*
+**checkRequired** *($field)*  
 Checks if the field has a value.
 
-**checkRequiredCheckbox** *($field)*
+**checkRequiredCheckbox** *($field)*  
 Checks if a checkbox has been selected. This is done automatically when auto processing the rules, and is included here just for completion.
 
-**checkGroupRequired** *($inputs)*
+**checkGroupRequired** *($inputs)*  
 Checks if at least one input (radio/checkbox) has been selected. $inputs is the container of the inputs.
 
-**checkGroupMax** *($inputs, max)*
+**checkGroupMax** *($inputs, max)*  
 Checks if a max amount of inputs (radio/checkbox) have been selected. $inputs is the container of the inputs.
 
-**checkGroupMin** *($inputs, min)*
+**checkGroupMin** *($inputs, min)*  
 Checks if a min amount of inputs (radio/checkbox) have been selected. $inputs is the container of the inputs.
 
-**checkRegExp** *($field, regExp)*
+**checkRegExp** *($field, regExp)*  
 Checks if the value matches a predefined regular expression. (i.e. alpha, email etc.)
 
-**checkCustomRegExp** *($field, regExp, modifiers)*
+**checkCustomRegExp** *($field, regExp, modifiers)*  
 Checks if the value matches the custom regular expression.
 
-**checkMax** *($field, max)*
+**checkMax** *($field, max)*  
 Checks if a number is equal to or smaller than the max value.
 
-**checkMin** *($field, min)*
+**checkMin** *($field, min)*  
 Checks if a number is equal to or larger than the min value.
 
-**checkMinLength** *($field, min)*
+**checkMinLength** *($field, min)*  
 Checks if the value is equal to or larger than the max length.
 
-**checkMaxLength** *($field, min)*
+**checkMaxLength** *($field, min)*  
 Checks if the value is equal to or smaller than the mix length.
 
 ---
