@@ -1,0 +1,40 @@
+{
+    "name": "validate",
+    "title": "Validate",
+    "description": "A barebones jQuery validation plugin.",
+    "keywords": [
+        "validate",
+        "validation",
+        "forms"
+    ],
+    "version": "1.0.1",
+    "author": {
+        "name": "Engage Interactive ",
+        "url": "http://engageinteractive.co.uk"
+    },
+    "maintainers": [
+        {
+            "name": "Todd Francis",
+            "email": "todd@engageinteractive.co.uk",
+            "url": "http://toddish.co.uk"
+        },
+        {
+            "name": "Durham Hale",
+            "email": "durham@engageinteractive.co.uk",
+            "url": "http://durhamhale.co.uk"
+        }
+    ],
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/engageinteractive/validate/blob/master/LICENSE.md"
+        }
+    ],
+    "bugs": "https://github.com/engageinteractive/validate/issues",
+    "homepage": "https://github.com/engageinteractive/validate",
+    "docs": "https://github.com/engageinteractive/validate",
+    "download": "https://github.com/engageinteractive/validate",
+    "dependencies": {
+        "jquery": ">=1.8"
+    }
+}
