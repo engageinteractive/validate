@@ -128,7 +128,7 @@ Validates the field, returns true/false.
 **checkValue** *($field, rules)*
 Validates a field based on the array of rules you pass in. Useful if you want to add new rules as you go.
 
-**fieldsToCheck** *($form)*****
+**fieldsToCheck** *($form)*
 Returns a jQuery selection of fields the form checks when validating. Pass in a form to check, or leave blank to use the currently set form.
 
 **checkRequired** *($field)*
